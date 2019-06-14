@@ -2,9 +2,9 @@
 
 This repository has been created for my Arden University practical project and is a multichannel communiations portal. A full stack application using NX tool and is also available on [http://www.anfon-syml.co.uk/](http://www.anfon-syml.co.uk/)
 
-# Nx is a set of Angular CLI power-ups
+# Nx.dev - Development Plugins
 
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png" width="250"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png" width="150"></p>
 
 ## Quick Start & Documentation
 
