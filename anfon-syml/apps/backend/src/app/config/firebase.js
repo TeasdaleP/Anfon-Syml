@@ -1,9 +1,9 @@
 module.exports = {
-  apiKey: "AIzaSyD2wURbsSpJ0GJzkSkNkQgFgyli5osfVv8",
-  authDomain: "anfon-syml.firebaseapp.com",
-  databaseURL: "https://anfon-syml.firebaseio.com",
-  projectId: "anfon-syml",
-  storageBucket: "anfon-syml.appspot.com",
-  messagingSenderId: "956001413127",
-  appId: "1:956001413127:web:1de7163b17262245"
+  apiKey: process.env.FIREBASE_DB_URL,
+  authDomain: process.env.FIREBASE_API_DOMAIN,
+  databaseURL: process.env.FIREBASE_DB_URL,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_SENDER_ID,
+  appId: process.env.FIREBASE_API_ID
 };
