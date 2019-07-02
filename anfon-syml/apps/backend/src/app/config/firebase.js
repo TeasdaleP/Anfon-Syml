@@ -1,9 +1,9 @@
 module.exports = {
-  apiKey: process.env.FIREBASE_DB_URL,
-  authDomain: process.env.FIREBASE_API_DOMAIN,
-  databaseURL: process.env.FIREBASE_DB_URL,
-  projectId: process.env.FIREBASE_PROJECT_ID,
-  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.FIREBASE_SENDER_ID,
-  appId: process.env.FIREBASE_API_ID
+  apiKey: process.env.firebase-api-key,
+  authDomain: process.env.firebase-api-domain,
+  databaseURL: process.env.firebase-database-url,
+  projectId: process.env.firebase-project-id,
+  storageBucket: process.env.firebase-storage-bucket,
+  messagingSenderId: process.env.firebase-sender-id,
+  appId: process.env.firebase-api-id
 };
