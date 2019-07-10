@@ -15,7 +15,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@anfon-syml/services/services": ["libs/services/services/src/index.ts"],
+      "@anfon-syml/data-model/user": ["libs/data-model/user/src/index.ts"],
+      "@anfon-syml/shared-resources": ["libs/shared-resources/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

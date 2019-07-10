@@ -16,6 +16,15 @@
     },
     "backend": {
       "tags": []
+    },
+    "services-services": {
+      "tags": []
+    },
+    "data-model-user": {
+      "tags": []
+    },
+    "shared-resources": {
+      "tags": []
     }
   }
 }
