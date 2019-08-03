@@ -22,7 +22,7 @@
               "apps/frontend/src/favicon.ico",
               "apps/frontend/src/assets"
             ],
-            "styles": ["apps/frontend/src/styles.scss"],
+            "styles": ["apps/frontend/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -200,7 +200,7 @@
       },
       "schematics": {
         "@nrwl/angular:component": {
-          "styleext": "scss"
+          "styleext": "css"
         }
       }
     },
@@ -231,7 +231,7 @@
       },
       "schematics": {
         "@nrwl/angular:component": {
-          "styleext": "scss"
+          "styleext": "css"
         }
       }
     },
@@ -262,7 +262,7 @@
       },
       "schematics": {
         "@nrwl/angular:component": {
-          "styleext": "scss"
+          "styleext": "css"
         }
       }
     }
