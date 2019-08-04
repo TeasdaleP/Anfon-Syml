@@ -53,6 +53,15 @@
   padding-left: 0;
   padding-right: 0;
 }
+
 .ui.mobile.only.grid .ui.menu .ui.vertical.menu {
   display: none;
+}
+
+.anfon-syml-pinned-bottom {
+  background-color: black;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  width: 100%
 }

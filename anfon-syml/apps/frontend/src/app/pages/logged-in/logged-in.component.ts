@@ -9,6 +9,8 @@ import { Router, ActivatedRoute } from "@angular/router";
 export class LoggedInComponent implements OnInit {
   public username: string;
   public date: any;
+  public sms: number;
+  public email: number;
 
   constructor (
     private router: Router,
@@ -16,6 +18,8 @@ export class LoggedInComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.sms = 10;
+    this.email = 99;
     this.username = "username";
     this.date = new Date;
   }
