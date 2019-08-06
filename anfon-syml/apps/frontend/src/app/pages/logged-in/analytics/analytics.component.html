@@ -5,23 +5,41 @@
 <div class="row">
   <div class="ui raised violet card fluid">
     <div class="content">
-      <div class="header">Sending Statistics</div>
+      <div class="header">Sending Trends</div>
       <div class="description">
-        <p>
-          Cute dogs come in a variety of shapes and sizes. Some cute dogs are
-          cute for their adorable faces, others for their tiny stature, and even
-          others for their massive size. Many people also have their own
-          barometers for what makes a cute dog.
-        </p>
+        <anfon-syml-overview-chart></anfon-syml-overview-chart>
       </div>
     </div>
   </div>
 </div>
 <br />
 <div class="row">
+  <div class="ui three column grid">
+    <div class="column">
+      <div class="ui violet segment">
+        <a class="ui violet ribbon label">DAILY</a>
+        <h3 class="ui center aligned header">SMS: <a class="ui purple huge circular label">{{daily.sms}}</a>
+          Email: <a class="ui purple huge circular label">{{daily.email}}</a></h3>
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui violet segment">
+        <a class="ui violet ribbon label">WEEKLY</a>
+        <h3 class="ui center aligned header">SMS: <a class="ui purple huge circular label">{{weekly.sms}}</a>
+          Email: <a class="ui purple huge circular label">{{weekly.email}}</a></h3>
+      </div>
+    </div>
+    <div class="column">
+      <div class="ui violet segment">
+        <a class="ui violet ribbon label">MONTHLY</a>
+        <h3 class="ui center aligned header">SMS: <a class="ui purple huge circular label">{{monthly.sms}}</a>
+          Email: <a class="ui purple huge circular label">{{monthly.email}}</a></h3>
+      </div>
+    </div>
+  </div>
   <div class="ui raised violet card fluid">
     <div class="content">
-      <div class="header">Sending Statistics</div>
+      <div class="header">Financial Summary</div>
       <div class="description">
         <p>
           Cute dogs come in a variety of shapes and sizes. Some cute dogs are

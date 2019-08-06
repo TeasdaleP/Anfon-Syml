@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+import { ChartsModule } from 'ng2-charts';
 
 const routes: Routes = [
   {
@@ -27,7 +28,8 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(routes , { initialNavigation: 'enabled' })
+    RouterModule.forRoot(routes , { initialNavigation: 'enabled' }),
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
