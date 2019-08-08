@@ -10,7 +10,8 @@ import { OverviewComponent } from './overview/overview.component';
 import { MessageComponent } from './message/message.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { CustomerTimelineComponent } from './customer/customer.component';
-import { OverviewChartComponent } from './analytics/running-overview/overview-chart.component';
+import { OverviewChartComponent } from './analytics/overview-chart/overview-chart.component';
+import { FinancialChartComponent } from './analytics/financial-chart/financial-chart.component';
 
 const COMPONENTS = [
   LoggedInComponent,
@@ -18,7 +19,8 @@ const COMPONENTS = [
   MessageComponent,
   AnalyticsComponent,
   CustomerTimelineComponent,
-  OverviewChartComponent
+  OverviewChartComponent,
+  FinancialChartComponent
 ];
 
 @NgModule({
