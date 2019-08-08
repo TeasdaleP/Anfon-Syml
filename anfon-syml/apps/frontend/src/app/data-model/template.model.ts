@@ -3,6 +3,6 @@ import { IContent } from './content.model';
 export interface ITemplates {
     id: string;
     title: string;
-    dateCrate: Date;
+    dateCreated: string;
     content: Array<IContent>;
 }

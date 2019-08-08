@@ -6,7 +6,7 @@ export interface IUsers {
     id: string;
     firstName: string;
     surname: string;
-    contact: Array<IContact>;
+    contact: IContact;
     template: Array<ITemplates>;
     communications: Array<ICommunications>;
 }

@@ -1,6 +1,43 @@
 <div class="row">
     <h1 class="ui huge dividing header">{{title | titlecase}}</h1>
   </div>
+  <br />
   <div class="row">
-    <p>Content of the Page</p>
+    <div class="ui raised violet card fluid">
+      <div class="content">
+        <div class="header">
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="violet user icon"></i>
+              <input [(ngModel)]="searchText" autocomplete="off" placeholder="Search...">
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="description">
+          <table class="ui celled table">
+            <thead>
+              <tr>
+                <th>Reference</th>
+                <th>Date</th>
+                <th>Email</th>
+                <th>Telephone</th>
+                <th>Channel</th>
+                <th>Content</th>
+            </tr>
+          </thead>
+            <tbody>
+              <tr *ngFor="let customer of customers | filter:searchText">
+                <td data-label="Reference">{{customer.id}}</td>
+                <td data-label="Date">{{customer.dateSent}}</td>
+                <td data-label="Email">{{customer.customer.contact.email}}</td>
+                <td data-label="Telephone">{{customer.customer.contact.telephone}}</td>
+                <td data-label="Channel">{{customer.content.channel}}</td>
+                <td data-label="Content">{{customer.content.content}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>

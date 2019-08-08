@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: "anfon-syml-logged-out",
@@ -9,6 +10,10 @@ import { Router, ActivatedRoute } from "@angular/router";
 export class LoggedOutComponent implements OnInit {
   public title: string;
   public id: number;
+  public loginForm = new FormGroup({
+    email: new FormControl(''),
+    password: new FormControl('')
+  })
 
   constructor (
     private router: Router,
@@ -21,6 +26,14 @@ export class LoggedOutComponent implements OnInit {
   }
 
   public login() {
-    this.router.navigate(['logged-in/', this.id])
+    if(this.loginForm.value.email === 'email'){
+      if(this.loginForm.value.password === 'password'){
+        this.router.navigate(['logged-in/', this.id]);
+      }else{
+        console.log('Password is incorrect!')
+      }
+    }else{
+      console.log('Email is incorrect!')
+    }
   }
 }
