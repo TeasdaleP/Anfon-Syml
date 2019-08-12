@@ -30,10 +30,10 @@ export class LoggedOutComponent implements OnInit {
       if(this.loginForm.value.password === 'password'){
         this.router.navigate(['logged-in/', this.id]);
       }else{
-        console.log('Password is incorrect!')
+        console.error('Password is incorrect!')
       }
     }else{
-      console.log('Email is incorrect!')
+      console.error('Email is incorrect!')
     }
   }
 }

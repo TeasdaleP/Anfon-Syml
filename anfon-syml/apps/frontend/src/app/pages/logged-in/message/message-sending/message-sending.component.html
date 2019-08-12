@@ -1,0 +1,29 @@
+<div class="ui raised violet card fluid">
+  <div class="header">
+    <div class="ui ordered steps fluid">
+      <div class="{{visualtemplate? 'active':'link'}} step" (click)="template()">
+        <div class="content">
+          <div class="title">Template</div>
+          <div class="description">Choose or create a template</div>
+        </div>
+      </div>
+      <div class="{{visualcustomer? 'active':'link'}} step" (click)="customer()">
+        <div class="content">
+          <div class="title">Customers</div>
+          <div class="description">Enter your audience details</div>
+        </div>
+      </div>
+      <div class="{{visualreview? 'active':'link'}} step" (click)="review()">
+        <div class="content">
+          <div class="title">Simply Send</div>
+          <div class="description">Confrim details and send</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <anfon-syml-message-template *ngIf="visualtemplate"></anfon-syml-message-template>
+    <anfon-syml-customer-details *ngIf="visualcustomer"></anfon-syml-customer-details>
+    <anfon-syml-message-review *ngIf="visualreview"></anfon-syml-message-review>
+  </div>
+</div>
