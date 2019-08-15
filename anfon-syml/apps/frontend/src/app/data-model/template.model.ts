@@ -1,8 +1,8 @@
-import { IContent } from './content.model';
+import { Channel } from '../enums/channel.enum';
 
 export interface ITemplates {
-    id: string;
     title: string;
-    dateCreated: string;
-    content: Array<IContent>;
+    date: Date;
+    channel: Channel
+    content: string;
 }

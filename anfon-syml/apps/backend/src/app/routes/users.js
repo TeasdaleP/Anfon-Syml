@@ -1,19 +1,21 @@
 const express = require('express');
 const router = express.Router();
 const firebase = require('firebase');
-const database = firebase.database();
+
+const database = firebase.database().ref('/users');
 const customfunc = require('../config/functions');
-const reference = database.ref('/Users');
+
 
 router.get('/', (req, res) => {
-    reference.on("value",
-        function(snapshot) {
-            res.json(snapshot.val());
-            reference.off("value");
-        },
-        function(errorObject) {
-            res.send("The read failed: " + errorObject.code);
-        });
+  database.on("value", function(snapshot) {
+      console.log(snapshot.val());
+      res.json(snapshot.val());
+      database.off("value");
+    },
+    function(errorObject) {
+        console.log("The read failed: " + errorObject.code);
+        res.send("The read failed: " + errorObject.code);
+    });
 });
 
 router.put('/', (req, res) => {
@@ -21,38 +23,34 @@ router.put('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    reference.once("value", function(snapshot) {
+    database.once("value", function(snapshot) {
         console.log(snapshot.val());
     })
 
-    const firstname = req.body.firstname;
-    const surname = req.body.surname;
-    const telephone = req.body.contact.telephone;
-    const email = req.body.contact.email;
+    const Firstname = req.body.firstname;
+    const Surname = req.body.surname;
+    const Password = req.body.password;
+    const Telephone = req.body.contact.telephone;
+    const Email = req.body.contact.email;
+    const Reference = customfunc.randomString(10)
 
-    const postUsers = reference.child(surname + ',' + firstname);
-    postUsers.set({
-        Reference: customfunc.randomString(10),
-        Firstname: firstname,
-        Surname: surname,
-        Contact: [{
-            Reference: customfunc.randomString(5),
-            Telephone: telephone,
-            Email: email
-        }]
+    database.child(Reference).set({
+      id: Reference,
+      firstname: Firstname,
+      surname: Surname,
+      password: Password,
+      contact: {
+        telephone: Telephone,
+        email: Email
+      },
+      templates: [],
+      communications: []
     });
-
-    if (database.ref('/Users/' + surname + ',' + firstname)) {
-        return res.status(200).send('User Added Successful')
-    } else {
-        return res.status(400).send('Error: Something has gone wrong here!')
-    }
+    res.status(200).send('Success! You have successfully added a user!')
 });
 
 router.delete('/', (req, res) => {
-    return res.status(418).send('Error : You wont be able to delete anything here!');
+    return res.status(418).send('Error : You wont be able to delete a user!');
 });
-
-// - This will be amended to search for user/:id
 
 module.exports = router;

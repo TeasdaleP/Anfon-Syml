@@ -4,9 +4,9 @@ import { ICommunications } from './communications.model';
 
 export interface IUsers {
     id: string;
-    firstName: string;
+    firstname: string;
     surname: string;
     contact: IContact;
-    template: Array<ITemplates>;
+    templates: Array<ITemplates>;
     communications: Array<ICommunications>;
 }

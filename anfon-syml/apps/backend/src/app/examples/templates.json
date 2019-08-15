@@ -1,0 +1,5 @@
+{
+  "title": "Sample Message",
+  "channel": "SMS",
+  "content": "This is a sample SMS message and will be used for setting up a new template"
+}

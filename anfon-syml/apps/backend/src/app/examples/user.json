@@ -1,0 +1,11 @@
+{
+  "firstname": "Gemma",
+  "surname": "Pollard",
+  "password": "Password",
+  "contact": {
+    "telephone": "07872631818",
+    "email": "gemma.pollard01@yahoo.co.uk"
+  },
+  "templates": [],
+  "communications": []
+}
