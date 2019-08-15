@@ -28,12 +28,12 @@
           </thead>
             <tbody>
               <tr *ngFor="let customer of customers | filter:searchText">
-                <td data-label="Reference">{{customer.id}}</td>
-                <td data-label="Date">{{customer.dateSent}}</td>
-                <td data-label="Email">{{customer.customer.contact.email}}</td>
-                <td data-label="Telephone">{{customer.customer.contact.telephone}}</td>
-                <td data-label="Channel">{{customer.content.channel}}</td>
-                <td data-label="Content">{{customer.content.content}}</td>
+                <td data-label="Reference">{{customer.customer.reference}}</td>
+                <td data-label="Date">{{customer.date}}</td>
+                <td data-label="Email">{{customer.customer.email}}</td>
+                <td data-label="Telephone">{{customer.customer.telephone}}</td>
+                <td data-label="Channel">Cross Reference Template</td>
+                <td data-label="Content">Cross Reference Template</td>
               </tr>
             </tbody>
           </table>

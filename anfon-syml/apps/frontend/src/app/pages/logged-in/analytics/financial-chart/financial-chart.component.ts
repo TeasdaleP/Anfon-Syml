@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
+import { CraigDavigService } from 'apps/frontend/src/app/services/craig-david.service';
 
 @Component({
   selector: "anfon-syml-financial-chart",
@@ -15,8 +16,8 @@ export class FinancialChartComponent implements OnInit {
     plugins: { datalabels: { anchor: 'end', align: 'end' }
     }
   };
-  public barChartLabels: Label[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-  public barChartType: ChartType = 'line';
+  public barChartLabels: Label[];
+  public barChartType: ChartType;
   public barChartLegend = true;
   public barChartPlugins = [];
 
@@ -25,9 +26,11 @@ export class FinancialChartComponent implements OnInit {
     { data: [40, 55, 56, 61, 80, 32, 65], label: 'SMS Cost' }
   ];
 
-  constructor() { }
+  constructor(public craigdavid: CraigDavigService) { }
 
   ngOnInit() {
+    this.barChartLabels = this.craigdavid.lastSevenDays();
+    this.barChartType = 'line';
   }
 
   public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {

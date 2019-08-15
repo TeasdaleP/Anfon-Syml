@@ -3,5 +3,5 @@ import { ICustomer } from './customer.model';
 export interface ICommunications {
     date: string;
     customer: ICustomer;
-    template: [];
+    template: Array<string>;
 }
