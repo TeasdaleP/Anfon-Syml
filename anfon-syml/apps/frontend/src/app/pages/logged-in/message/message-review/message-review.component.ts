@@ -14,4 +14,8 @@ export class MessageReviewComponent implements OnInit {
   ngOnInit() {
     this.title = "message review";
   }
+
+  confirm() {
+    console.log('submitted');
+  }
 }

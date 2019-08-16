@@ -1,1 +1,15 @@
-<p>{{title}}</p>
+<form class="ui large form" [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+  <div class="field">
+    <label>Customer Reference Number</label>
+    <input type="text" formControlName="reference" />
+  </div>
+  <div class="field error">
+    <label>Email Address</label>
+    <input type="text" formControlName="email" />
+  </div>
+  <div class="field">
+    <label>Mobile Number</label>
+    <input type="text" formControlName="telephone" />
+  </div>
+  <button class="ui right floated large violet submit button" (click)="onSubmit()">Next</button>
+</form>

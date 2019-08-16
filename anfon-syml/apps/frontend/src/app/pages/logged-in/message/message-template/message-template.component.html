@@ -1,1 +1,20 @@
-<p>{{title}}</p>
+<form class="ui large form" [formGroup]="templateForm" (ngSubmit)="onSubmit()">
+    <div class="field">
+      <label>Template Title</label>
+      <input type="text" formControlName="title">
+    </div>
+    <div class="field">
+      <label>Select your channel</label>
+      <select formControlName="channel">
+        <option value="0">SMS</option>
+        <option value="1">Email</option>
+        <option value="2">Both</option>
+      </select>
+    </div>
+    <div class="field">
+        <label>Message Content</label>
+        <textarea formControlName="content" rows="3"></textarea>
+    </div>
+    <p>You have [170] characters remaining</p>
+    <button class="ui right floated large violet submit button" (click)="onSubmit()">Next</button>
+</form>

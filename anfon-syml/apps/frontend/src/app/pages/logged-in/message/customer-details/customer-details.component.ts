@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: "anfon-syml-customer-details",
@@ -8,10 +9,19 @@ import { Component, OnInit } from "@angular/core";
 
 export class CustomerDetailsComponent implements OnInit {
   public title: string;
+  public customerForm = new FormGroup({
+    reference: new FormControl(''),
+    email: new FormControl(''),
+    telephone: new FormControl('')
+  })
 
   constructor () {}
 
   ngOnInit() {
     this.title = "customer details";
+  }
+
+  public onSubmit() {
+    console.log(this.customerForm.value);
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: "anfon-syml-message-template",
@@ -8,10 +9,19 @@ import { Component, OnInit } from "@angular/core";
 
 export class MessageTemplateComponent implements OnInit {
   public title: string;
+  public templateForm = new FormGroup({
+    title: new FormControl(''),
+    channel: new FormControl(''),
+    content: new FormControl('')
+  })
 
   constructor () {}
 
   ngOnInit() {
     this.title = "message template";
+  }
+
+  public onSubmit() {
+    console.log(this.templateForm.value);
   }
 }
