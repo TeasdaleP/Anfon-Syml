@@ -8,7 +8,7 @@ import { Component, OnInit } from "@angular/core";
 
 export class AnalyticsComponent implements OnInit {
   public title: string;
-  public daily: any;
+  public yearly: any;
   public weekly: any;
   public monthly: any;
 
@@ -16,17 +16,17 @@ export class AnalyticsComponent implements OnInit {
 
   ngOnInit() {
     this.title = "analytics";
-    this.daily = {
-      sms: 101,
-      email: 134
-    };
     this.weekly = {
-      sms: 678,
-      email: 973
+      sms: 100,
+      email: 100
     };
     this.monthly = {
-      sms: 1591,
-      email: 2192
+      sms: 400,
+      email: 400
+    };
+    this.yearly = {
+      sms: 1000,
+      email: 1000
     };
   }
 }
