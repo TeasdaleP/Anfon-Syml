@@ -9,6 +9,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 
 export class MessageTemplateComponent implements OnInit {
   public title: string;
+  public remaining: number;
   public templateForm = new FormGroup({
     title: new FormControl(''),
     channel: new FormControl(''),
@@ -18,6 +19,7 @@ export class MessageTemplateComponent implements OnInit {
   constructor () {}
 
   ngOnInit() {
+    this.remaining = 170;
     this.title = "message template";
   }
 

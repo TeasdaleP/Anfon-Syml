@@ -15,6 +15,6 @@
         <label>Message Content</label>
         <textarea formControlName="content" rows="3"></textarea>
     </div>
-    <p>You have [170] characters remaining</p>
+    <p>You have {{remaining}} characters remaining</p>
     <button class="ui right floated large violet submit button" (click)="onSubmit()">Next</button>
 </form>

@@ -1,4 +1,4 @@
-import { ICustomer } from './customer.model';
+import { ICustomer } from './contact.model';
 
 export interface ICommunications {
     date: string;
