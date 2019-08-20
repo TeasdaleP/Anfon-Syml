@@ -1,0 +1,55 @@
+<div class="row">
+  <h1 class="ui huge dividing header">{{ title | titlecase }}</h1>
+</div>
+<div class="ui raised violet card fluid">
+  <div class="content">
+    <div class="description">
+      <form class="ui large form" [formGroup]="templateForm" (ngSubmit)="onSubmit()">
+        <div class="field">
+          <label>Template Title</label>
+          <input type="text" formControlName="title">
+        </div>
+        <div class="field">
+          <label>Select your channel</label>
+          <select formControlName="channel">
+            <option value="sms">SMS</option>
+            <option value="email">Email</option>
+          </select>
+        </div>
+        <div class="field">
+            <label>Message Content</label>
+            <textarea formControlName="content" rows="3"></textarea>
+        </div>
+        <p>You have {{remaining}} characters remaining</p>
+        <button class="ui right floated large violet submit button" (click)="onSubmit()">Create Template</button>
+    </form>
+    </div>
+  </div>
+</div>
+<div class="ui raised violet card fluid">
+  <div class="content">
+    <div class="header">
+      Built Templates
+    </div>
+    <div class="description">
+      <table class="ui celled table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Title</th>
+            <th>Channel</th>
+            <th>Content</th>
+        </tr>
+      </thead>
+        <tbody>
+          <tr>
+            <td data-label="Date">Date</td>
+            <td data-label="Title">Title</td>
+            <td data-label="Channel">Channel</td>
+            <td data-label="Content">Content</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

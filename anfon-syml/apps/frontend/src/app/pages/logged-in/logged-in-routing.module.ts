@@ -8,6 +8,7 @@ import { OverviewComponent } from './overview/overview.component';
 import { MessageComponent } from './message/message.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { CustomerTimelineComponent } from './customer/customer.component';
+import { TemplateComponent } from './template/template.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
       { path: 'overview', outlet: 'auth', component: OverviewComponent },
       { path: 'message', outlet: 'auth', component: MessageComponent },
       { path: 'analytics', outlet: 'auth', component: AnalyticsComponent },
+      { path: 'template', outlet: 'auth', component: TemplateComponent },
       { path: 'customer', outlet: 'auth', component: CustomerTimelineComponent }
     ]
   }

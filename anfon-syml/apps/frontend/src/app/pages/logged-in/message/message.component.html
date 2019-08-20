@@ -1,6 +1,36 @@
 <div class="row">
-  <h1 class="ui huge dividing header">{{title | titlecase}}</h1>
+  <h1 class="ui huge dividing header">{{ title | titlecase }}</h1>
 </div>
-<br />
-<anfon-syml-message-sending></anfon-syml-message-sending>
-
+<div class="ui raised violet card fluid">
+  <div class="content">
+    <div class="description">
+      <form class="ui large form" [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+        <div class="field">
+            <label>Select your Template</label>
+            <select formControlName="template">
+              <option value="title of template - channel">Title of Template - Channel</option>
+            </select>
+        </div>
+        <div class="field">
+            <label>Customer Reference</label>
+            <input type="text" formControlName="email" />
+        </div>
+        <div class="field">
+          <label>Email Address</label>
+          <input type="text" formControlName="email" />
+        </div>
+        <div class="field">
+          <label>Mobile Number</label>
+          <input type="text" formControlName="telephone" />
+        </div>
+        <div class="field">
+            <label>Message Content</label>
+            <textarea rows="2" placeholder="The content of template will be displayed here"></textarea>
+        </div>
+        <button class="ui right floated large violet submit button" (click)="onSubmit()">
+          Send
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

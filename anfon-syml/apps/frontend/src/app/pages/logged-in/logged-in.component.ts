@@ -9,8 +9,6 @@ import { Router, ActivatedRoute } from "@angular/router";
 export class LoggedInComponent implements OnInit {
   public username: string;
   public date: any;
-  public sms: number;
-  public email: number;
 
   constructor (
     private router: Router,
@@ -18,26 +16,29 @@ export class LoggedInComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.sms = 10;
-    this.email = 99;
+    this.router.navigate([{outlets:{auth:['overview']}}] ,{relativeTo:this.route});
     this.username = "username";
     this.date = new Date;
   }
 
   public overview() {
-    this.router.navigate([{outlets:{auth:['overview']}}] ,{relativeTo:this.route})
+    this.router.navigate([{outlets:{auth:['overview']}}] ,{relativeTo:this.route});
   }
 
   public message() {
-    this.router.navigate([{outlets:{auth:['message']}}] ,{relativeTo:this.route})
+    this.router.navigate([{outlets:{auth:['message']}}] ,{relativeTo:this.route});
   }
 
   public analytics() {
-    this.router.navigate([{outlets:{auth:['analytics']}}] ,{relativeTo:this.route})
+    this.router.navigate([{outlets:{auth:['analytics']}}] ,{relativeTo:this.route});
   }
 
   public customer() {
-    this.router.navigate([{outlets:{auth:['customer']}}] ,{relativeTo:this.route})
+    this.router.navigate([{outlets:{auth:['customer']}}] ,{relativeTo:this.route});
+  }
+
+  public template() {
+    this.router.navigate([{outlets:{auth:['template']}}] ,{relativeTo:this.route});
   }
 
 }

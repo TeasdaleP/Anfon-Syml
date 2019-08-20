@@ -5,13 +5,19 @@
     </h2>
     <form class="ui large form" [formGroup]="loginForm" (ngSubmit)="login()">
       <div class="ui stacked segment">
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="violet user icon"></i>
-            <input type="text" formControlName="email" name="email" placeholder="E-mail address">
+        <div class="ui form error" *ngIf="error">
+          <div class="ui error message">
+            <p>Error! Please check your log in details and try again</p>
           </div>
         </div>
-        <div class="field">
+        <br />
+        <div class="field {{error? 'error': ''}}">
+          <div class="ui left icon input">
+            <i class="violet user icon"></i>
+            <input type="text" formControlName="username" name="username" placeholder="Username">
+          </div>
+        </div>
+        <div class="field {{error? 'error': ''}}">
           <div class="ui left icon input">
             <i class="violet lock icon"></i>
             <input type="password" formControlName="password" name="password" placeholder="Password">

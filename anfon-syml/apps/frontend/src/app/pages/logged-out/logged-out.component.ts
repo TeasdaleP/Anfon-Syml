@@ -8,10 +8,10 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ["./logged-out.component.css"]
 })
 export class LoggedOutComponent implements OnInit {
-  public title: string;
+  public error: boolean;
   public id: number;
   public loginForm = new FormGroup({
-    email: new FormControl(''),
+    username: new FormControl(''),
     password: new FormControl('')
   })
 
@@ -21,19 +21,19 @@ export class LoggedOutComponent implements OnInit {
   ) {}
 
   ngOnInit () {
-    this.title = "Logged out!";
+    this.error = false;
     this.id = 1001;
   }
 
   public login() {
-    if(this.loginForm.value.email === 'email'){
+    if(this.loginForm.value.username === 'teasdale'){
       if(this.loginForm.value.password === 'password'){
         this.router.navigate(['logged-in/', this.id]);
       }else{
-        console.error('Password is incorrect!')
+        this.error = true;
       }
     }else{
-      console.error('Email is incorrect!')
+      this.error = true;
     }
   }
 }

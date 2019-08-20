@@ -2,12 +2,12 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
-  selector: "anfon-syml-message-template",
-  templateUrl: "./message-template.component.html",
-  styleUrls: ["./message-template.component.css"]
+  selector: "anfon-syml-template",
+  templateUrl: "./template.component.html",
+  styleUrls: ["./template.component.css"]
 })
 
-export class MessageTemplateComponent implements OnInit {
+export class TemplateComponent implements OnInit {
   public title: string;
   public remaining: number;
   public templateForm = new FormGroup({
@@ -20,7 +20,7 @@ export class MessageTemplateComponent implements OnInit {
 
   ngOnInit() {
     this.remaining = 170;
-    this.title = "message template";
+    this.title = "template builder";
   }
 
   public onSubmit() {
