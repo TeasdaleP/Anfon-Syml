@@ -1,0 +1,25 @@
+{
+  "firstname": "Phillip",
+  "surname": "Teasdale",
+  "password": "password",
+  "contact": {
+    "telephone": "07549545590",
+    "email": "pteasdale55@gmail.com"
+  },
+  "templates": [
+    {
+      "title": "Welcome to Anfon Syml",
+      "channel": "SMS",
+      "content": "Welcome to Anfon-Syml. Thank you for taking the opportunity to look at our application. I hope you enjoy what yuor looking to achieve and any feedback would be welcomed to pteasdale55@gmail.com"
+    }
+  ],
+  "communications": [
+    {
+      "customer": {
+        "reference": "A0001",
+        "email": "customer@email.com",
+        "telephone": "07778889990"
+      }
+    }
+  ]
+}

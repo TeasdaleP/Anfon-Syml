@@ -1,8 +1,13 @@
 {
-  "customer": {
-    "referece": "",
-    "email": "",
-    "telephone": ""
-  },
-  "template": []
+  "id": "teasdale, phillip",
+  "communications": [
+      {
+          "customer": {
+              "reference": "A0001",
+              "email": "customer@email.com",
+              "telephone": "07778889990"
+          },
+          "template": "swtbO"
+      }
+  ]
 }

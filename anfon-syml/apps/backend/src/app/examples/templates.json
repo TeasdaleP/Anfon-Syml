@@ -1,5 +1,25 @@
 {
-  "title": "Welcome to Anfon Syml",
-  "channel": "SMS",
-  "content": "Welcome to Anfon-Syml. Thank you for taking the opportunity to look at our application. I hope you enjoy what yuor looking to achieve and any feedback would be welcomed to pteasdale55@gmail.com"
+  "id": "teasdale, phillip",
+  "templates": [
+      {
+          "title": "Sorry that your leaving...",
+          "channel": "Email",
+          "content": "We're really sorry that your leaving Anfon-Syml. We hope you have had a good experience and we'd love to welcome you back in the future"
+      },
+      {
+          "title": "Sorry that your leaving...",
+          "channel": "SMS",
+          "content": "We're really sorry that your leaving Anfon-Syml. We hope you have had a good experience and we'd love to welcome you back in the future"
+      },
+      {
+          "title": "Welcome to Anfon Syml",
+          "channel": "SMS",
+          "content": "Welcome to Anfon-Syml. Thank you for taking the opportunity to look at our application. I hope you enjoy what yuor looking to achieve and any feedback would be welcomed to pteasdale55@gmail.com"
+      },
+      {
+          "title": "Welcome to Anfon Syml",
+          "channel": "Email",
+          "content": "Welcome to Anfon-Syml. Thank you for taking the opportunity to look at our application. I hope you enjoy what yuor looking to achieve and any feedback would be welcomed to pteasdale55@gmail.com"
+      }
+  ]
 }

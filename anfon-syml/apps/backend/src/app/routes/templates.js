@@ -6,44 +6,39 @@ const database = firebase.database().ref('/templates');
 const customfunc = require('../config/functions');
 
 
-router.get('/', (req, res) => {
-  database.on("value", function(snapshot) {
-      console.log(snapshot.val());
-      res.json(snapshot.val());
-      database.off("value");
-    },
-    function(errorObject) {
-        console.log("The read failed: " + errorObject.code);
-        res.send("The read failed: " + errorObject.code);
-    });
+router.get('/template', (req, res) => {
+  return res.status(418).send('Error : You wont be able to get anything here!');
 });
 
-router.put('/', (req, res) => {
+router.put('/template', (req, res) => {
     return res.status(418).send('Error : You wont be able to update anything here!');
 });
 
-router.post('/', (req, res) => {
-    database.once("value", function(snapshot) {
-        console.log(snapshot.val());
-    })
+router.post('/template', function(req, res) {
+  var Reference = req.body.id;
+  var CreateDate = Date.now();
+  var Request = [];
+  var i;
 
-    const Title = req.body.title;
-    const Channel = req.body.channel;
-    const Content = req.body.content;
-    const Today = new Date.now();
-    const Reference = customfunc.randomString(10)
+  for (i = 0; i < req.body.templates.length; i++) {
+      var Object = {
+          id: randomString(5),
+          title: req.body.templates[i].title,
+          date: CreateDate,
+          channel: req.body.templates[i].channel,
+          content: req.body.templates[i].content
+      }
+      Request.push(Object);
+  }
 
-    database.child(Reference).set({
-      title: Title,
-      date: Today,
-      surname: Surname,
-      channel: Channel,
-      content: Content
-    });
-    res.status(200).send('Success! You have successfully added a user!')
+  firebase
+      .database()
+      .ref(Reference)
+      .child('templates')
+      .set(Request)
 });
 
-router.delete('/', (req, res) => {
+router.delete('/template', (req, res) => {
     return res.status(418).send('Error : You wont be able to delete a user!');
 });
 
