@@ -1,6 +1,7 @@
 {
   "firstname": "Phillip",
   "surname": "Teasdale",
+  "username": "Pteasdale55",
   "password": "password",
   "contact": {
     "telephone": "07549545590",
@@ -10,6 +11,11 @@
     {
       "title": "Welcome to Anfon Syml",
       "channel": "SMS",
+      "content": "Welcome to Anfon-Syml. Thank you for taking the opportunity to look at our application. I hope you enjoy what yuor looking to achieve and any feedback would be welcomed to pteasdale55@gmail.com"
+    },
+    {
+      "title": "Welcome to Anfon Syml",
+      "channel": "Email",
       "content": "Welcome to Anfon-Syml. Thank you for taking the opportunity to look at our application. I hope you enjoy what yuor looking to achieve and any feedback would be welcomed to pteasdale55@gmail.com"
     }
   ],
