@@ -5,7 +5,6 @@ const firebase = require('firebase');
 const database = firebase.database().ref('/communications');
 const customfunc = require('../config/functions');
 
-
 router.get('/communications', (req, res) => {
   database.on("value", function(snapshot) {
       console.log(snapshot.val());

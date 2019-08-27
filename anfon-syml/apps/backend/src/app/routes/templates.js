@@ -22,7 +22,7 @@ router.post('/template', function(req, res) {
 
   for (i = 0; i < req.body.templates.length; i++) {
       var Object = {
-          id: randomString(5),
+          id: customfunc.randomString(5),
           title: req.body.templates[i].title,
           date: CreateDate,
           channel: req.body.templates[i].channel,
