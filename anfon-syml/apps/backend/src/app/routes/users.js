@@ -2,55 +2,86 @@ const express = require('express');
 const router = express.Router();
 const firebase = require('firebase');
 
-const database = firebase.database().ref('/users');
 const customfunc = require('../config/functions');
 
 
 router.get('/', (req, res) => {
-  database.on("value", function(snapshot) {
-      console.log(snapshot.val());
-      res.json(snapshot.val());
-      database.off("value");
-    },
-    function(errorObject) {
+  console.log("HTTP GET Request");
+    const userReference = firebase.database().ref("/");
+    userReference.on(
+      "value",
+      function(snapshot) {
+        console.log(snapshot.val());
+        res.json(snapshot.val());
+        userReference.off("value");
+      },
+      function(errorObject) {
         console.log("The read failed: " + errorObject.code);
         res.send("The read failed: " + errorObject.code);
-    });
+      }
+    );
 });
 
 router.put('/', (req, res) => {
-    return res.status(418).send('Error : You wont be able to update anything here!');
+  console.log("HTTP PUT Request");
+  var TemplateReference = randomString(5);
+  var CreateDate = Date.now();
+  var Reference = req.body.username;
+
+  var Request = {
+    id: customfunc.randomString(10),
+    firstname: req.body.firstname,
+    surname: req.body.surname,
+    username: req.body.username,
+    password: req.body.password,
+    contact: {
+      telephone: req.body.contact.telephone,
+      email: req.body.contact.email
+    },
+    templates: [
+      {
+        id: TemplateReference,
+        title: req.body.templates[0].title,
+        date: CreateDate,
+        channel: req.body.templates[0].channel,
+        content: req.body.templates[0].content
+      }
+    ],
+    communications: [
+      {
+        customer: {
+          reference: req.body.communications[0].customer.reference,
+          email: req.body.communications[0].customer.email,
+          telephone: req.body.communications[0].customer.telephone
+        },
+        date: CreateDate,
+        templates: TemplateReference
+      }
+    ]
+  };
+
+  firebase
+  .database()
+  .ref(Reference)
+  .set(Request);;
 });
 
 router.post('/', (req, res) => {
-    database.once("value", function(snapshot) {
-        console.log(snapshot.val());
-    })
+  console.log("HTTP POST Request");
 
-    const Firstname = req.body.firstname;
-    const Surname = req.body.surname;
-    const Password = req.body.password;
-    const Telephone = req.body.contact.telephone;
-    const Email = req.body.contact.email;
-    const Reference = customfunc.randomString(10)
+  var Reference = req.body.id;
+  var Field = req.body.field;
+  var Value = req.body.value;
 
-    database.child(Reference).set({
-      id: Reference,
-      firstname: Firstname,
-      surname: Surname,
-      password: Password,
-      contact: {
-        telephone: Telephone,
-        email: Email
-      },
-      templates: [],
-      communications: []
-    });
-    res.status(200).send('Success! You have successfully added a user!')
+  firebase
+  .database()
+  .ref(Reference)
+  .child(Field)
+  .update(Value);
 });
 
 router.delete('/', (req, res) => {
-    return res.status(418).send('Error : You wont be able to delete a user!');
+    return res.status(418).send('Error : You wont be able to delete user information!');
 });
 
 module.exports = router;
