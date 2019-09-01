@@ -13,7 +13,7 @@
         <a class="item" (click)="customer()">Customer Timeline</a>
     </div>
     <div class="ui sticky inverted anfon-syml-pinned-bottom">
-      <h3 class="ui center violet aligned header" style="padding: 5px">{{ username | titlecase }}<br/>
+      <h3 class="ui center violet aligned header" style="padding: 5px">{{ firstname | titlecase }} {{ surname | titlecase }}<br/>
         {{date | date:'EEEE'}} {{date | date:'dd'}} {{date | date:'MMMM'}}</h3>
     </div>
   </div>

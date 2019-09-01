@@ -1,5 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
+import { AngularFireDatabase } from '@angular/fire/database';
+import { UsernameService } from '../../services/username.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: "anfon-syml-logged-in",
@@ -7,17 +10,25 @@ import { Router, ActivatedRoute } from "@angular/router";
   styleUrls: ["./logged-in.component.css"]
 })
 export class LoggedInComponent implements OnInit {
-  public username: string;
+  public firstname: string;
+  public surname: string;
   public date: any;
 
   constructor (
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private db: AngularFireDatabase,
+    private reference: UsernameService
   ) {}
 
   ngOnInit() {
     this.router.navigate([{outlets:{auth:['overview']}}] ,{relativeTo:this.route});
-    this.username = "username";
+    this.db.object(this.reference.getUser()).snapshotChanges().subscribe(actions => {
+      const firstname = actions.payload.child('firstname').val();
+      const surname = actions.payload.child('surname').val();
+      this.firstname = firstname;
+      this.surname = surname;
+    });
     this.date = new Date;
   }
 
