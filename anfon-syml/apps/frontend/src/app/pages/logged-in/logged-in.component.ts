@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
-import { AngularFireDatabase } from '@angular/fire/database';
 import { UsernameService } from '../../services/username.service';
 import { Observable } from 'rxjs';
 
@@ -17,18 +16,17 @@ export class LoggedInComponent implements OnInit {
   constructor (
     private router: Router,
     private route: ActivatedRoute,
-    private db: AngularFireDatabase,
     private reference: UsernameService
   ) {}
 
   ngOnInit() {
     this.router.navigate([{outlets:{auth:['overview']}}] ,{relativeTo:this.route});
-    this.db.object(this.reference.getUser()).snapshotChanges().subscribe(actions => {
-      const firstname = actions.payload.child('firstname').val();
-      const surname = actions.payload.child('surname').val();
-      this.firstname = firstname;
-      this.surname = surname;
-    });
+    // this.db.object(this.reference.getUser()).snapshotChanges().subscribe(actions => {
+    //   const firstname = actions.payload.child('firstname').val();
+    //   const surname = actions.payload.child('surname').val();
+    //   this.firstname = firstname;
+    //   this.surname = surname;
+    // });
     this.date = new Date;
   }
 

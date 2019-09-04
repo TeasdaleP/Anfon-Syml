@@ -2,7 +2,7 @@ import { Channel } from '../enums/channel.enum';
 
 export interface ITemplates {
     title: string;
-    date: Date;
+    date: string;
     channel: Channel
     content: string;
 }

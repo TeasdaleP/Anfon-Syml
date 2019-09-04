@@ -12,8 +12,8 @@
         <div class="field">
           <label>Select your channel</label>
           <select formControlName="channel">
-            <option value="sms">SMS</option>
-            <option value="email">Email</option>
+            <option value="SMS">SMS</option>
+            <option value="Email">Email</option>
           </select>
         </div>
         <div class="field">
@@ -42,11 +42,11 @@
         </tr>
       </thead>
         <tbody>
-          <tr>
-            <td data-label="Date">Date</td>
-            <td data-label="Title">Title</td>
-            <td data-label="Channel">Channel</td>
-            <td data-label="Content">Content</td>
+          <tr *ngFor="let template of template$ | async">
+            <td data-label="Date">{{template.date}}</td>
+            <td data-label="Title">{{template.title}}</td>
+            <td data-label="Channel">{{template.channel}}</td>
+            <td data-label="Content">{{template.content}}</td>
           </tr>
         </tbody>
       </table>

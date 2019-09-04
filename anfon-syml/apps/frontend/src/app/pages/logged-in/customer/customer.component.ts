@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { ICommunications } from '../../../data-model/communications.model';
-import { Channel } from '../../../enums/channel.enum';
+import { Observable } from 'rxjs';
+import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: "anfon-syml-customer",
@@ -11,19 +11,14 @@ import { Channel } from '../../../enums/channel.enum';
 export class CustomerTimelineComponent implements OnInit {
   public searchText: string;
   public title: string;
-  public customers: Array<ICommunications>;
+  communication$: Observable<any[]>;
+  private collection: AngularFirestoreCollection;
 
-  constructor () {}
+  constructor (private data: AngularFirestore) {}
 
   ngOnInit() {
     this.title = "customer timeline";
-    this.customers = [
-      { date: '01/02/1985', customer: {
-          reference: 'ref:0001',
-          email: 'email@address.com',
-          telephone: '02920123456'
-        }, template: ['q', 'a', 'A']
-      },
-    ]
+    this.collection = this.data.collection('communications');
+    this.communication$ = this.collection.valueChanges();
   }
 }

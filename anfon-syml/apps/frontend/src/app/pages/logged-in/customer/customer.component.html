@@ -18,8 +18,8 @@
           <table class="ui celled table">
             <thead>
               <tr>
-                <th>Reference</th>
                 <th>Date</th>
+                <th>Reference</th>
                 <th>Email</th>
                 <th>Telephone</th>
                 <th>Channel</th>
@@ -27,13 +27,13 @@
             </tr>
           </thead>
             <tbody>
-              <tr *ngFor="let customer of customers | filter:searchText">
-                <td data-label="Reference">{{customer.customer.reference}}</td>
-                <td data-label="Date">{{customer.date}}</td>
-                <td data-label="Email">{{customer.customer.email}}</td>
-                <td data-label="Telephone">{{customer.customer.telephone}}</td>
-                <td data-label="Channel">Cross Reference Template</td>
-                <td data-label="Content">Cross Reference Template</td>
+              <tr *ngFor="let communication of communication$ | async | filter:searchText">
+                <td data-label="Date">{{communication.date}}</td>
+                <td data-label="Reference">{{communication.customer.reference}}</td>
+                <td data-label="Email">{{communication.customer.email}}</td>
+                <td data-label="Telephone">{{communication.customer.telephone}}</td>
+                <td data-label="Channel">{{communication.channel}}</td>
+                <td data-label="Content">{{communication.template}}</td>
               </tr>
             </tbody>
           </table>
