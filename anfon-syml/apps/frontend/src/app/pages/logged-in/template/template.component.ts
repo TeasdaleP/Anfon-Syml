@@ -11,6 +11,7 @@ import { ITemplates } from '../../../data-model/template.model';
 })
 
 export class TemplateComponent implements OnInit {
+  public content: string;
   public templateForm = new FormGroup({
     title: new FormControl(''),
     channel: new FormControl(''),
@@ -25,7 +26,6 @@ export class TemplateComponent implements OnInit {
   constructor (private data: AngularFirestore) { }
 
   ngOnInit() {
-    this.remaining = 170;
     this.title = "template builder";
     this.collection = this.data.collection('templates');
     this.template$ = this.collection.valueChanges();
@@ -33,23 +33,14 @@ export class TemplateComponent implements OnInit {
 
   public onSubmit() {
     if(this.templateForm.valid){
-      const date = new Date;
+      const today = new Date;
       this.template = {
-        date: this.todaysDate(),
+        date: today,
         title: this.templateForm.value.title,
         channel: this.templateForm.value.channel,
         content: this.templateForm.value.content
       }
-      console.log('template: ', this.template)
-      this.collection.add(this.template)
+      this.collection.add(this.template);
     }
-  }
-
-  private todaysDate() {
-    const date = new Date;
-    const d = date.getDate();
-    const m = date.getMonth() + 1;
-    const y = date.getFullYear();
-    return `${d}/${m}/${y}`;
   }
 }

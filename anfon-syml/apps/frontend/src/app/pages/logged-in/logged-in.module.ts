@@ -15,6 +15,7 @@ import { CustomerTimelineComponent } from './customer/customer.component';
 import { OverviewChartComponent } from './analytics/overview-chart/overview-chart.component';
 import { FinancialChartComponent } from './analytics/financial-chart/financial-chart.component';
 import { TemplateComponent } from './template/template.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const COMPONENTS = [
   LoggedInComponent,
@@ -25,6 +26,7 @@ const COMPONENTS = [
   OverviewChartComponent,
   FinancialChartComponent,
   TemplateComponent,
+  ProfileComponent
 ];
 
 @NgModule({

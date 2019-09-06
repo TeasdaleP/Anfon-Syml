@@ -28,7 +28,7 @@
           </thead>
             <tbody>
               <tr *ngFor="let communication of communication$ | async | filter:searchText">
-                <td data-label="Date">{{communication.date}}</td>
+                <td data-label="Date">{{communication.date.toDate() | date: 'dd/MM/yyyy'}}</td>
                 <td data-label="Reference">{{communication.customer.reference}}</td>
                 <td data-label="Email">{{communication.customer.email}}</td>
                 <td data-label="Telephone">{{communication.customer.telephone}}</td>

@@ -8,12 +8,12 @@
         <div class="field">
             <label>Select your Template</label>
             <select formControlName="template">
-              <option value="title of template - channel">Title of Template - Channel</option>
+                <option *ngFor="let template of template$ | async" value="{{template.content}}">{{template.title}} - {{template.channel}}</option>
             </select>
         </div>
         <div class="field">
             <label>Customer Reference</label>
-            <input type="text" formControlName="email" />
+            <input type="text" formControlName="reference" />
         </div>
         <div class="field">
           <label>Email Address</label>
@@ -24,9 +24,12 @@
           <input type="text" formControlName="telephone" />
         </div>
         <div class="field">
-            <label>Message Content</label>
-            <textarea rows="2" placeholder="The content of template will be displayed here"></textarea>
-        </div>
+          <label>Select the Channel</label>
+          <select formControlName="channel">
+              <option value="SMS">SMS</option>
+              <option value="Email">Email</option>
+          </select>
+      </div>
         <button class="ui right floated large violet submit button" (click)="onSubmit()">
           Send
         </button>

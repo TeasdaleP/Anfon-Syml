@@ -1,0 +1,22 @@
+<div  *ngFor="let user of user$ | async">
+  <div class="ui raised violet centered card">
+    <div class="image">
+      <img src="../../../../assets/images/{{user.username}}.jpg" />
+    </div>
+    <div class="content">
+      <div class="header">{{user.firstname}} {{user.lastname}}</div>
+      <div class="meta">
+        <span class="date">{{user.username}}</span>
+      </div>
+      <div class="description">
+        {{user.contact.email}} <br />
+        {{user.contact.telephone}} <br />
+      </div>
+    </div>
+    <div class="extra content">
+      <div>
+        <i class="user icon"></i> Member since {{user.registered.toDate() | date: 'dd/MM/yyyy'}}
+      </div>
+    </div>
+  </div>
+</div>

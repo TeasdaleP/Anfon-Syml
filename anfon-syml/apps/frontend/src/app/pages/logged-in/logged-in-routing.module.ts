@@ -9,6 +9,7 @@ import { MessageComponent } from './message/message.component';
 import { AnalyticsComponent } from './analytics/analytics.component';
 import { CustomerTimelineComponent } from './customer/customer.component';
 import { TemplateComponent } from './template/template.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,8 @@ const routes: Routes = [
       { path: 'message', outlet: 'auth', component: MessageComponent },
       { path: 'analytics', outlet: 'auth', component: AnalyticsComponent },
       { path: 'template', outlet: 'auth', component: TemplateComponent },
-      { path: 'customer', outlet: 'auth', component: CustomerTimelineComponent }
+      { path: 'customer', outlet: 'auth', component: CustomerTimelineComponent },
+      { path: 'profile', outlet: 'auth', component: ProfileComponent}
     ]
   }
 ];

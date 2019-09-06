@@ -18,9 +18,11 @@
         </div>
         <div class="field">
             <label>Message Content</label>
-            <textarea formControlName="content" rows="3"></textarea>
+            <textarea formControlName="content" rows="3" [(ngModel)]="content"></textarea>
         </div>
-        <p>You have {{remaining}} characters remaining</p>
+        <div *ngIf="content">
+          <p>{{ 170 - content.length }} characters remaining</p>
+        </div>
         <button class="ui right floated large violet submit button" (click)="onSubmit()">Create Template</button>
     </form>
     </div>
@@ -43,7 +45,7 @@
       </thead>
         <tbody>
           <tr *ngFor="let template of template$ | async">
-            <td data-label="Date">{{template.date}}</td>
+            <td data-label="Date">{{template.date.toDate() | date: 'dd/MM/yyyy'}}</td>
             <td data-label="Title">{{template.title}}</td>
             <td data-label="Channel">{{template.channel}}</td>
             <td data-label="Content">{{template.content}}</td>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { TotalCountService } from '../../../services/total-count.service';
 
 @Component({
   selector: "anfon-syml-analytics",
@@ -8,25 +9,16 @@ import { Component, OnInit } from "@angular/core";
 
 export class AnalyticsComponent implements OnInit {
   public title: string;
-  public yearly: any;
-  public weekly: any;
-  public monthly: any;
+  public daily: number;
+  public monthly: number;
+  public yearly: number;
 
-  constructor () {}
+  constructor (private total: TotalCountService) {}
 
   ngOnInit() {
     this.title = "analytics";
-    this.weekly = {
-      sms: 100,
-      email: 100
-    };
-    this.monthly = {
-      sms: 400,
-      email: 400
-    };
-    this.yearly = {
-      sms: 1000,
-      email: 1000
-    };
+    this.daily = this.total.getDailyTotal();
+    this.monthly = this.total.getMonthlyTotal();
+    this.yearly = this.total.getYearlyTotal();
   }
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
-import { CraigDavigService } from 'apps/frontend/src/app/services/craig-david.service';
+
+import { TotalCountService } from 'apps/frontend/src/app/services/total-count.service';
 
 @Component({
   selector: "anfon-syml-overview-chart",
@@ -21,17 +22,17 @@ export class OverviewChartComponent implements OnInit {
   public barChartType: ChartType;
   public barChartLegend = true;
   public barChartPlugins = [];
+  public barChartData: ChartDataSets[];
 
-  public barChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40, 35], label: 'Email' },
-    { data: [28, 48, 40, 19, 86, 27, 90, 75], label: 'SMS' }
-  ];;
-
-  constructor(public craigdavid: CraigDavigService) { }
+  constructor(private total: TotalCountService) { }
 
   ngOnInit() {
-    this.barChartLabels = this.craigdavid.lastSevenDays();
+    this.barChartLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     this.barChartType = 'bar';
+    this.barChartData = [
+      { data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], label: 'Email' },
+      { data: [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1], label: 'SMS' }
+    ];
   }
 
   public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {

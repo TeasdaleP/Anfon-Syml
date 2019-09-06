@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { UsernameService } from '../../services/username.service';
 import { Observable } from 'rxjs';
+import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: "anfon-syml-logged-in",
@@ -9,24 +10,24 @@ import { Observable } from 'rxjs';
   styleUrls: ["./logged-in.component.css"]
 })
 export class LoggedInComponent implements OnInit {
+  public username: string;
   public firstname: string;
   public surname: string;
   public date: any;
+  private collection: AngularFirestoreCollection;
+  user$: Observable<any[]>;
 
   constructor (
     private router: Router,
     private route: ActivatedRoute,
-    private reference: UsernameService
+    private reference: UsernameService,
+    private data: AngularFirestore
   ) {}
 
   ngOnInit() {
     this.router.navigate([{outlets:{auth:['overview']}}] ,{relativeTo:this.route});
-    // this.db.object(this.reference.getUser()).snapshotChanges().subscribe(actions => {
-    //   const firstname = actions.payload.child('firstname').val();
-    //   const surname = actions.payload.child('surname').val();
-    //   this.firstname = firstname;
-    //   this.surname = surname;
-    // });
+    this.collection = this.data.collection('users');
+    this.user$ = this.collection.valueChanges();
     this.date = new Date;
   }
 
@@ -48,6 +49,10 @@ export class LoggedInComponent implements OnInit {
 
   public template() {
     this.router.navigate([{outlets:{auth:['template']}}] ,{relativeTo:this.route});
+  }
+
+  public profile() {
+    this.router.navigate([{outlets:{auth:['profile']}}] ,{relativeTo:this.route});
   }
 
 }

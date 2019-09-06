@@ -1,7 +1,9 @@
 import { ICustomer } from './contact.model';
+import { Channel } from '../enums/channel.enum';
 
 export interface ICommunications {
-    date: string;
+    date: Date;
     customer: ICustomer;
-    template: Array<string>;
+    channel: Channel
+    template: string;
 }
