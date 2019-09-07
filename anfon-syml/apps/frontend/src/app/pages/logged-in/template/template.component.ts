@@ -11,6 +11,9 @@ import { ITemplates } from '../../../data-model/template.model';
 })
 
 export class TemplateComponent implements OnInit {
+  public error: boolean;
+  public success: boolean;
+  public duplicate: number;
   public content: string;
   public templateForm = new FormGroup({
     title: new FormControl(''),
@@ -27,20 +30,30 @@ export class TemplateComponent implements OnInit {
 
   ngOnInit() {
     this.title = "template builder";
+    this.error = false;
+    this.success = false;
+    this.duplicate = 0;
     this.collection = this.data.collection('templates');
     this.template$ = this.collection.valueChanges();
   }
 
   public onSubmit() {
-    if(this.templateForm.valid){
-      const today = new Date;
-      this.template = {
-        date: today,
-        title: this.templateForm.value.title,
-        channel: this.templateForm.value.channel,
-        content: this.templateForm.value.content
+    if(this.duplicate < 1){
+      if(this.templateForm.valid && !this.templateForm.pristine){
+        this.error = false;
+        const today = new Date;
+        this.template = {
+          date: today,
+          title: this.templateForm.value.title,
+          channel: this.templateForm.value.channel,
+          content: this.templateForm.value.content
+        }
+        this.collection.add(this.template);
+        this.success = true;
+        this.duplicate+=1;
+      }else{
+        this.error = true;
       }
-      this.collection.add(this.template);
     }
   }
 }

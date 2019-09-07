@@ -7,10 +7,14 @@ import { ICommunications } from '../../../data-model/communications.model';
 @Component({
   selector: "anfon-syml-message",
   templateUrl: "./message.component.html",
-  styleUrls: ["./message.component.css"]
+  styleUrls: ["./message.component.css"],
+
 })
 
 export class MessageComponent implements OnInit {
+  public error: boolean;
+  public success: boolean;
+  public duplicate: number;
   public title: string;
   public communication: ICommunications;
   public messageForm = new FormGroup({
@@ -30,6 +34,9 @@ export class MessageComponent implements OnInit {
 
   ngOnInit() {
     this.title = "simple send";
+    this.error = false;
+    this.success = false;
+    this.duplicate = 0;
     this.commsCollect = this.data.collection('communications');
     this.communication$ = this.commsCollect.valueChanges();
     this.templateCollect = this.data.collection('templates');
@@ -37,19 +44,25 @@ export class MessageComponent implements OnInit {
   }
 
   public onSubmit() {
-    if(this.messageForm.valid){
-      const today = new Date;
-      this.communication = {
-        date: today,
-        customer: {
-          telephone: this.messageForm.value.telephone,
-          email: this.messageForm.value.email,
-          reference: this.messageForm.value.reference
-        },
-        channel: this.messageForm.value.channel,
-        template: this.messageForm.value.template
+    if(this.duplicate < 1){
+      if(this.messageForm.valid && !this.messageForm.pristine){
+        const today = new Date;
+        this.communication = {
+          date: today,
+          customer: {
+            telephone: this.messageForm.value.telephone,
+            email: this.messageForm.value.email,
+            reference: this.messageForm.value.reference
+          },
+          channel: this.messageForm.value.channel,
+          template: this.messageForm.value.template
+        }
+        this.commsCollect.add(this.communication);
+        this.success = true;
+        this.duplicate+=1;
+      }else{
+        this.error = true;
       }
-      this.commsCollect.add(this.communication);
     }
   }
 }

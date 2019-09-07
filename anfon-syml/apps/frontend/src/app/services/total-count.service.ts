@@ -27,15 +27,11 @@ export class TotalCountService {
     const day = this.date;
     const month = this.date.getMonth()+1;
     console.warn('counts', day, month);
-    this.data.collection('communications').valueChanges().subscribe(comms=> {
-      comms.forEach(function (comm) {
-        console.log(comm);
-      });
-      //let query: firebase.firestore.Query;
-      //query.where('date', '==', this.date)
-
+    this.data.collection('communications').snapshotChanges().subscribe(comms=> {
+      
+      console.warn(comms);
+      
     });
-    //console.warn(this.data.collection('communications').snapshotChanges())
     return this._day;
   }
 

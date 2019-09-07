@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ChartsModule } from 'ng2-charts';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OrderModule } from 'ngx-order-pipe';
 
 // -- Components
 import { LoggedInRoutingModule } from './logged-in-routing.module';
@@ -37,7 +38,8 @@ const COMPONENTS = [
     ChartsModule,
     Ng2SearchPipeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    OrderModule
   ],
   exports: [COMPONENTS]
 })

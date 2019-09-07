@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 
-@Injectable({
+Injectable({
   providedIn: 'root'
 })
 
 export interface Email {
-  
+  title: string;
 }
 
 export class EmailSendingService {

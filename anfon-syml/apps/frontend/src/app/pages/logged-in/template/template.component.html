@@ -4,27 +4,62 @@
 <div class="ui raised violet card fluid">
   <div class="content">
     <div class="description">
-      <form class="ui large form" [formGroup]="templateForm" (ngSubmit)="onSubmit()">
-        <div class="field">
-          <label>Template Title</label>
-          <input type="text" formControlName="title">
+      <form
+        class="ui large form"
+        [formGroup]="templateForm"
+        (ngSubmit)="onSubmit()">
+        <div class="ui form error" *ngIf="error">
+            <div class="ui error message">
+              <p>Error! Please enter the correct template information and re-sumbit.</p>
+            </div>
         </div>
-        <div class="field">
-          <label>Select your channel</label>
-          <select formControlName="channel">
-            <option value="SMS">SMS</option>
-            <option value="Email">Email</option>
-          </select>
+        <div class="ui form success" *ngIf="success">
+            <div class="ui success message">
+              <p>Success! Your template has been submitted successfully.</p>
+            </div>
         </div>
-        <div class="field">
-            <label>Message Content</label>
-            <textarea formControlName="content" rows="3" [(ngModel)]="content"></textarea>
+        <br />
+        <div class="ui grid">
+          <div class="two column row">
+            <div class="eight wide column">
+              <div class="field {{error? 'error': ''}}">
+                <label>Template Title</label>
+                <input type="text" formControlName="title" />
+              </div>
+            </div>
+            <div class="eight wide column">
+              <div class="field {{error? 'error': ''}}">
+                <label>Select your channel</label>
+                <select formControlName="channel">
+                  <option value="SMS">SMS</option>
+                  <option value="Email">Email</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="one column row">
+            <div class="sixteen wide column">
+              <div class="field {{error? 'error': ''}}">
+                <label>Message Content</label>
+                <textarea
+                  formControlName="content"
+                  rows="3"
+                  [(ngModel)]="content"
+                ></textarea>
+              </div>
+            </div>
+          </div>
         </div>
+        <br />
         <div *ngIf="content">
           <p>{{ 170 - content.length }} characters remaining</p>
         </div>
-        <button class="ui right floated large violet submit button" (click)="onSubmit()">Create Template</button>
-    </form>
+        <button
+          class="ui right floated large violet submit button"
+          (click)="onSubmit()">
+          Create Template
+        </button>
+      </form>
     </div>
   </div>
 </div>
@@ -41,14 +76,16 @@
             <th>Title</th>
             <th>Channel</th>
             <th>Content</th>
-        </tr>
-      </thead>
+          </tr>
+        </thead>
         <tbody>
-          <tr *ngFor="let template of template$ | async">
-            <td data-label="Date">{{template.date.toDate() | date: 'dd/MM/yyyy'}}</td>
-            <td data-label="Title">{{template.title}}</td>
-            <td data-label="Channel">{{template.channel}}</td>
-            <td data-label="Content">{{template.content}}</td>
+          <tr *ngFor="let template of (template$ | async) ">
+            <td data-label="Date">
+              {{ template.date.toDate() | date: 'dd/MM/yyyy' }}
+            </td>
+            <td data-label="Title">{{ template.title }}</td>
+            <td data-label="Channel">{{ template.channel }}</td>
+            <td data-label="Content">{{ template.content }}</td>
           </tr>
         </tbody>
       </table>
