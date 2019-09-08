@@ -7,7 +7,7 @@
       <form
         class="ui large form"
         [formGroup]="messageForm"
-        (ngSubmit)="onSubmit(messageForm.value)">
+        (ngSubmit)="onSubmit()">
         <div class="ui form error" *ngIf="error">
             <div class="ui error message">
               <p>Error! Please enter the correct template information and re-sumbit.</p>

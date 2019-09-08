@@ -20,7 +20,6 @@ export class LoggedInComponent implements OnInit {
   constructor (
     private router: Router,
     private route: ActivatedRoute,
-    private reference: UsernameService,
     private data: AngularFirestore
   ) {}
 

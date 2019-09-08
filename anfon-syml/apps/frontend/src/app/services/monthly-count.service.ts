@@ -10,7 +10,6 @@ import { Channel } from '../enums/channel.enum';
 export class MonthlyTotalService {
   private _total: number;
   
-
   constructor(private data: AngularFirestore) {
     this._total = 0;
   }
