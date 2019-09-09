@@ -1,29 +1,51 @@
-import { LoggedOutComponent } from "./logged-out.component";
-import { of } from 'rxjs';
+import { Observable, of } from "rxjs";
+import { AngularFirestore } from "@angular/fire/firestore";
+import { TestBed } from "@angular/core/testing";
+import { LoggedOutComponent } from './logged-out.component';
+import { Router } from '@angular/router';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+
+const mockRouter = { navigate: jasmine.createSpy('navigate').and.returnValue(true) };
+const input = [[ { username: 'name', password: 'pass'} ]];
+const data = of(input);
+const collectionStub = { valueChanges: jasmine.createSpy('valueChanges').and.returnValue(data) };
+const angularFirestoreStub = { collection: jasmine.createSpy('collection').and.returnValue(collectionStub) };
 
 describe('Logged Out Component', () => {
   let component: LoggedOutComponent;
-  let mockRouter, mockFirestore, mockUser;
+  let angularFirestore: AngularFirestore;
 
-  mockUser = {
-    username: 'username',
-    password: 'password'
-  }
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [
+        LoggedOutComponent,
+        ReactiveFormsModule,
+        { provide: Router, useValue: mockRouter },
+        { provide: AngularFirestore, useValue: angularFirestoreStub }
+      ]
+    });
 
-  mockRouter = {
-    navigate: () => {}
-  }
-
-  mockFirestore = {
-    collection: () => of(mockUser)
-  }
-
-  beforeEach( () => {
-    component = new LoggedOutComponent(mockRouter, mockFirestore);
+    component = TestBed.get(LoggedOutComponent);
+    angularFirestore = TestBed.get(AngularFirestore);
   });
 
-  it('Should be defined', () => {
-    expect(component).toBeDefined();
+  it('Should be created', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('Error should be undefined', () => {
+    expect(component.error).toBeUndefined();
+  });
+
+  it('Error should be false on initalised', () => {
+    component.ngOnInit();
+    expect(component.error).toBe(false);
+  });
+
+  it('Should have valid/pristine form groups', () => {
+    component.login();
+    expect(component.loginForm.valid).toBe(true);
+    expect(component.loginForm.pristine).toBe(true);
   });
 
 });

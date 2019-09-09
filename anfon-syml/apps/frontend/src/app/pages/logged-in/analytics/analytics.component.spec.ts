@@ -5,9 +5,9 @@ describe('Analytics Component', () => {
   let mockTotalCount;
 
   mockTotalCount = {
-    getDailyTotal: () => {},
-    getMonthlyTotal: () => {},
-    getYearlyTotal: () => {}
+    getDailyTotal: () => (1),
+    getMonthlyTotal: () => (11),
+    getYearlyTotal: () => (111)
   }
 
   beforeEach( () => {
@@ -16,6 +16,29 @@ describe('Analytics Component', () => {
 
   it('Should be defined', () => {
     expect(component).toBeDefined();
+  });
+
+  it('Title should be analytics', () => {
+    component.ngOnInit();
+    expect(component.title).toBe('analytics');
+  });
+
+  it('Should have a daily total', () => {
+    component.ngOnInit();
+    const total = mockTotalCount.getDailyTotal();
+    expect(total).toBe(1);
+  });
+
+  it('Should have a monthly total', () => {
+    component.ngOnInit();
+    const month = mockTotalCount.getMonthlyTotal();
+    expect(month).toBe(11);
+  });
+
+  it('Should have a yearly total', () => {
+    component.ngOnInit();
+    const year = mockTotalCount.getYearlyTotal();
+    expect(year).toBe(111);
   });
 
 });
