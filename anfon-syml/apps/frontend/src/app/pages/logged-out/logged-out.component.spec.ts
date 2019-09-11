@@ -3,10 +3,10 @@ import { AngularFirestore } from "@angular/fire/firestore";
 import { TestBed } from "@angular/core/testing";
 import { LoggedOutComponent } from './logged-out.component';
 import { Router } from '@angular/router';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const mockRouter = { navigate: jasmine.createSpy('navigate').and.returnValue(true) };
-const input = [[ { username: 'name', password: 'pass'} ]];
+const input = [[ { username: 'user', password: 'pass', id: 'id'} ]];
 const data = of(input);
 const collectionStub = { valueChanges: jasmine.createSpy('valueChanges').and.returnValue(data) };
 const angularFirestoreStub = { collection: jasmine.createSpy('collection').and.returnValue(collectionStub) };
@@ -46,6 +46,13 @@ describe('Logged Out Component', () => {
     component.login();
     expect(component.loginForm.valid).toBe(true);
     expect(component.loginForm.pristine).toBe(true);
+  });
+
+  it('Login function should login if the credentials match', () => {
+    component.loginForm.controls['username'].setValue('user');
+    component.loginForm.controls['password'].setValue('pass');
+    component.login();
+    expect(component.loginForm.valid).toBeTruthy();
   });
 
 });
