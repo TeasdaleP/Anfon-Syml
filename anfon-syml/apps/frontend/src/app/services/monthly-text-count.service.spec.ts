@@ -1,8 +1,8 @@
-import { MonthlyTotalService } from "./monthly-count.service";
+import { MonthlyTextTotalService } from "./monthly-text-count.service";
 import { of } from 'rxjs';
 
-describe('Monthly Total Service', () => {
-  let service: MonthlyTotalService;
+describe('Monthly Text Service', () => {
+  let service: MonthlyTextTotalService;
   let mockFirestore, comms;
 
   comms = {}
@@ -12,7 +12,7 @@ describe('Monthly Total Service', () => {
   }
 
   beforeEach( () => {
-    service = new MonthlyTotalService(mockFirestore);
+    service = new MonthlyTextTotalService(mockFirestore);
   });
 
   it('Should be defined', () => {

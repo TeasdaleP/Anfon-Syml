@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
-import { MonthlyTotalService } from 'apps/frontend/src/app/services/monthly-count.service';
-import { Channel } from 'apps/frontend/src/app/enums/channel.enum';
+import { MonthlyTextTotalService } from 'apps/frontend/src/app/services/monthly-text-count.service';
+import { MonthlyEmailTotalService } from 'apps/frontend/src/app/services/monthly-email-count.service';
 
 @Component({
   selector: "anfon-syml-overview-chart",
@@ -24,44 +24,21 @@ export class OverviewChartComponent implements OnInit {
   public barChartLegend = true;
   public barChartPlugins = [];
   public barChartData: ChartDataSets[];
+  public duplicate: number;
 
   constructor(
-    private count: MonthlyTotalService,
-  ) { }
+    private sms: MonthlyTextTotalService,
+    private email: MonthlyEmailTotalService
+  ) {
+    this.duplicate = 0;
+  }
 
   ngOnInit() {
     this.barChartLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     this.barChartType = 'bar';
-    this.barChartData = [
-      { data: [
-        this.count.monthTotal(1, Channel.Email),
-        this.count.monthTotal(2, Channel.Email),
-        this.count.monthTotal(3, Channel.Email),
-        this.count.monthTotal(4, Channel.Email),
-        this.count.monthTotal(5, Channel.Email),
-        this.count.monthTotal(6, Channel.Email),
-        this.count.monthTotal(7, Channel.Email),
-        this.count.monthTotal(8, Channel.Email),
-        this.count.monthTotal(9, Channel.Email),
-        this.count.monthTotal(10, Channel.Email),
-        this.count.monthTotal(11, Channel.Email),
-        this.count.monthTotal(12, Channel.Email)
-      ], label: 'Email' },
-      { data: [
-        this.count.monthTotal(1, Channel.SMS),
-        this.count.monthTotal(2, Channel.SMS),
-        this.count.monthTotal(3, Channel.SMS),
-        this.count.monthTotal(4, Channel.SMS),
-        this.count.monthTotal(5, Channel.SMS),
-        this.count.monthTotal(6, Channel.SMS),
-        this.count.monthTotal(7, Channel.SMS),
-        this.count.monthTotal(8, Channel.SMS),
-        this.count.monthTotal(9, Channel.SMS),
-        this.count.monthTotal(10, Channel.SMS),
-        this.count.monthTotal(11, Channel.SMS),
-        this.count.monthTotal(12, Channel.SMS)
-      ], label: 'SMS' }
-    ];
+    if(this.duplicate < 1) {
+      this.barChartData = this.chartData();
+    }
   }
 
   public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
@@ -70,5 +47,39 @@ export class OverviewChartComponent implements OnInit {
 
   public chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
     //console.log(event, active);
+  }
+
+  private chartData(): any {
+    this.duplicate = this.duplicate+1;
+    return [
+      { data: [ 
+        this.email.january(),
+        this.email.february(),
+        this.email.march(),
+        this.email.april(),
+        this.email.may(),
+        this.email.june(),
+        this.email.july(),
+        this.email.august(),
+        this.email.september(),
+        this.email.october(),
+        this.email.november(),
+        this.email.december()
+      ], label: 'Email' },
+      { data: [ 
+        this.sms.january(),
+        this.sms.february(),
+        this.sms.march(),
+        this.sms.april(),
+        this.sms.may(),
+        this.sms.june(),
+        this.sms.july(),
+        this.sms.august(),
+        this.sms.september(),
+        this.sms.october(),
+        this.sms.november(),
+        this.sms.december() 
+      ], label: 'SMS' }
+    ];
   }
 }
